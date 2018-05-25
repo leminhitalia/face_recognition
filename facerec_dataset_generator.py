@@ -63,7 +63,7 @@ while (True):
         break
 
     # If image taken reach 100, stop taking video
-    elif count > 100:
+    elif count > 50:
         break
 
 # Stop video

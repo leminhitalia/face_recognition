@@ -60,10 +60,10 @@ while True:
         Id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
 
         # Check the ID if exist
-        if Id == 1:
-            Id = 'Y Minh Le'
-        elif Id == 2:
-            Id = 'Kieu Dang'
+        if str(Id) == '0829':
+            Id = 'YLe'
+        elif str(Id) == '0877':
+            Id = 'HieuVu'
         else:
             Id = 'Unknown'
 
