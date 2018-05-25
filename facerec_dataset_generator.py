@@ -29,7 +29,7 @@ count = 0
 assure_path_exists(dataset_folder_name)
 
 # For each person, one face id
-face_id = input("Enter your id: ")
+face_id = int(input("Enter your id: "))
 face_name = input("Enter your name: ")
 
 # Start looping
@@ -53,7 +53,7 @@ while (True):
         count += 1
 
         # Save the captured image into the datasets folder
-        cv2.imwrite(dataset_folder_name + face_name + '.' + str(face_id) + '.' + str(count) + ".jpg", gray[y:y + h, x:x + w])
+        cv2.imwrite(dataset_folder_name + face_name + '.' + str(face_id) + '.' + str(count) + ".jpg", gray[y:y + h,x:x + w])
 
         # Display the video frame, with bounded rectangle on the person's face
         cv2.imshow('frame', image_frame)

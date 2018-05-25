@@ -10,7 +10,7 @@ import cv2
 # Import numpy for matrices calculations
 import numpy as np
 
-import os
+import os, json
 
 
 def assure_path_exists(path):
@@ -39,6 +39,13 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 # Initialize and start the video frame capture
 cam = cv2.VideoCapture(0)
 
+# Read user data
+user_data_folder = 'user_data/'
+assure_path_exists(user_data_folder)
+user_data_file = 'user_data.json'
+with open(user_data_folder + user_data_file) as json_file:
+    user_data = json.load(json_file)
+
 # Loop
 while True:
     # Read the video frame
@@ -60,14 +67,15 @@ while True:
         Id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
 
         # Check the ID if exist
-        if str(Id) == '0829':
-            Id = 'YLe'
-        elif str(Id) == '0877':
-            Id = 'HieuVu'
+        if Id is not None:
+            for user in user_data:
+                if str(Id) == str(user['id']):
+                    Id = user['name']
+                    break
         else:
             Id = 'Unknown'
 
-        Id = Id + "{0:.2f}%".format(round(100 - confidence, 2))
+        Id = Id + " {0:.2f}%".format(round(100 - confidence, 2))
 
         # Put text describe who is in the picture
         cv2.rectangle(im, (x-22,y-90), (x+w+22, y-22), (0,255,0), -1)
