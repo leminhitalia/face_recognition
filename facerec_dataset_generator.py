@@ -50,7 +50,7 @@ while (True):
         cv2.imwrite(dataset_folder_name + face_name + '.' + str(face_id) + '.' + str(count) + ".jpg", gray[y:y + h,x:x + w])
 
         # Display the video frame, with bounded rectangle on the person's face
-        cv2.imshow('frame', image_frame)
+        cv2.imshow('Detector and Generator', image_frame)
 
     # To stop taking video, press 'q' for at least 100ms
     if cv2.waitKey(100) & 0xFF == ord('q'):

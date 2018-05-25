@@ -76,7 +76,7 @@ while True:
         cv2.putText(im, str(Id), (x,y-40), font, 1, (255,255,255), 3)
 
     # Display the video frame with the bounded rectangle
-    cv2.imshow('im',im)
+    cv2.imshow('Recognizer',im)
 
     # If 'q' is pressed, close program
     if cv2.waitKey(10) & 0xFF == ord('q'):
