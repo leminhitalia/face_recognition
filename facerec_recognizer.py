@@ -31,7 +31,7 @@ recognizer.read('trainer/trainer.yml')
 cascadePath = "classifiers/haarcascade_frontalface_default.xml"
 
 # Create classifier from prebuilt model
-faceCascade = cv2.CascadeClassifier(cascadePath);
+faceCascade = cv2.CascadeClassifier(cascadePath)
 
 # Set the font style
 font = cv2.FONT_HERSHEY_SIMPLEX
