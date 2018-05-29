@@ -13,9 +13,10 @@ After installing, you can check to see if the soft is good:
 
 
 If everything is good, you can continue to install necessary libraries:
-- Install 'dlib' for Python (https://pypi.org/project/dlib/): pip install dlib
-- Install 'opencv' for Python (https://pypi.org/project/opencv-python/): pip install opencv-python
-- Install 'opencv-contrib-python' for Python (https://pypi.org/project/opencv-contrib-python/): pip install opencv-contrib-python
+- Install 'opencv' for Python (https://pypi.org/project/opencv-python/): **pip install opencv-python**
+- Install 'numpy' for Python (https://pypi.org/project/numpy/): **This is included in above 'opencv' package.**
+- Install 'pillow' for Python (https://pypi.org/project/Pillow/): **pip install Pillow**
+- Install 'opencv-contrib-python' for Python (https://pypi.org/project/opencv-contrib-python/): **pip install opencv-contrib-python**
 
 IDE:
 - Recommend to use IntelliJ Community (https://www.jetbrains.com/idea/download/#section=windows) with installing Python Community Edition plugin (https://confluence.jetbrains.com/display/PYH/)
