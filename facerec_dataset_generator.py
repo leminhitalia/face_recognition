@@ -47,7 +47,8 @@ while (True):
         count += 1
 
         # Save the captured image into the datasets folder
-        cv2.imwrite(dataset_folder_name + face_name + '.' + str(face_id) + '.' + str(count) + ".jpg", gray[y:y + h,x:x + w])
+        cv2.imwrite(dataset_folder_name + face_name + '.' + str(face_id) + '.' + str(count) + ".jpg",
+                    gray[y:y + h, x:x + w])
 
         # Display the video frame, with bounded rectangle on the person's face
         cv2.imshow('Detector and Generator', image_frame)

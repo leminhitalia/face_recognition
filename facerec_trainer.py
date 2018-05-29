@@ -66,7 +66,6 @@ def getImagesAndLabels(path):
             # Add the ID to IDs
             ids.append(id)
 
-
         if id not in non_duplicate_ids:
             non_duplicate_ids.append(id)
             user_ids.append({
