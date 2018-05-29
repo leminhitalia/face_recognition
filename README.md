@@ -18,9 +18,10 @@ If everything is good, you can continue to install necessary libraries:
 - Install 'opencv-contrib-python' for Python (https://pypi.org/project/opencv-contrib-python/): pip install opencv-contrib-python
 
 IDE:
-Recommend to use IntelliJ Community (https://www.jetbrains.com/idea/download/#section=windows) with installing Python Community Edition plugin (https://confluence.jetbrains.com/display/PYH/)
+- Recommend to use IntelliJ Community (https://www.jetbrains.com/idea/download/#section=windows) with installing Python Community Edition plugin (https://confluence.jetbrains.com/display/PYH/)
 
 
+Don't need to read this:
 - The context that the topic is brought up; why and who it matters; what, when, and how it helps for whom:
 - What people can take away after joining the topic:
 - Main contents of the topic:
