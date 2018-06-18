@@ -26,3 +26,8 @@ Don't need to read this:
 - The context that the topic is brought up; why and who it matters; what, when, and how it helps for whom:
 - What people can take away after joining the topic:
 - Main contents of the topic:
+
+pip install Keras
+pip install scikit-learn
+pip install imutils
+pip install argparse
