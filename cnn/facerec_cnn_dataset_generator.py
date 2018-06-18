@@ -14,12 +14,12 @@ if save_folder_name:
     if not os.path.exists(base_dir):
         os.makedirs(base_dir)
 
-print("[INFO] loading facial landmark predictor...")
+print("[INFO] Loading facial landmark predictor...")
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("model/shape_predictor_68_face_landmarks.dat")
 fa = FaceAligner(predictor, desiredFaceWidth=256)
 
-print("[INFO] camera sensor warming up...")
+print("[INFO] Camera sensor warming up...")
 vs = VideoStream().start()
 time.sleep(2.0)
 count_image = 0
@@ -28,12 +28,12 @@ count_image = 0
 while True:
     # grab the frame from the threaded video stream, resize it to
     # have a maximum width of 600 pixels, and convert it to
-    # grayscale
+    # gray scale
     frame = vs.read()
     frame = imutils.resize(frame, width=600)
     height, width = frame.shape[:2]
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    # detect faces in the grayayscale frame
+    # detect faces in the gray scale frame
     rects = detector(gray_frame, 0)
 
 
@@ -55,10 +55,10 @@ while True:
             if count_image > 20:
                 count_image = 0
 
-    # loopop over the face detections
+    # loop over the face detections
     for rect in rects:
-        (x,y,w,h) = face_utils.rect_to_bb(rect)
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0,0,255), 1)
+        (x, y, w, h) = face_utils.rect_to_bb(rect)
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 255), 1)
 
     # show the frame
     cv2.imshow("Frame", frame)
