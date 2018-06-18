@@ -6,8 +6,20 @@ import time
 import cv2
 import dlib
 import os
+import json
+
+user_data_file = 'user_data.json'
+with open(user_data_file) as json_file:
+    user_data = json.load(json_file)
 
 save_folder_name = int(input("Enter your id: "))
+user_name = int(input("Enter your name: "))
+
+user_data.append({
+    "id": save_folder_name,
+    "name": user_name
+})
+
 base_dir = "face_images/"
 if save_folder_name:
     base_dir = base_dir + str(save_folder_name) + "/"
@@ -54,6 +66,8 @@ while True:
             count_image += 1
             if count_image > 20:
                 count_image = 0
+                with open(user_data_file, 'w+') as outfile:
+                    json.dump(user_data, outfile, indent=4)
 
     # loop over the face detections
     for rect in rects:
