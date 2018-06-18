@@ -7,10 +7,10 @@ import cv2
 import dlib
 import os
 
-save_file_name = int(input("Enter your id: "))
+save_folder_name = int(input("Enter your id: "))
 base_dir = "face_images/"
-if save_file_name:
-    base_dir = base_dir + str(save_file_name) + "/"
+if save_folder_name:
+    base_dir = base_dir + str(save_folder_name) + "/"
     if not os.path.exists(base_dir):
         os.makedirs(base_dir)
 
