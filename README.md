@@ -28,6 +28,9 @@ Don't need to read this:
 - Main contents of the topic:
 
 pip install Keras
+
 pip install scikit-learn
+
 pip install imutils
+
 pip install argparse
