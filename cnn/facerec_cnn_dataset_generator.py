@@ -58,24 +58,23 @@ while True:
             count_image += 1
             if count_image > 20:
                 count_image = 0
+
                 user_data = []
                 entry = {
                     "id": save_folder_name,
                     "name": user_name
                 }
-                if not os.path.isfile(user_data_file):
-                    user_data.append(entry)
-                    with open(user_data_file, mode='w') as f:
-                        f.write(json.dumps(user_data, indent=4))
-                else:
+                try:
                     with open(user_data_file) as feedsjson:
                         user_data = json.load(feedsjson)
                         print("[INFO] feeds1: " + str(user_data))
-                        user_data.append(entry)
-                        print("[INFO] feeds2: " + str(user_data))
-                        with open(user_data_file, mode='w') as f:
-                            f.write(json.dumps(user_data, indent=4))
+                except IOError:
+                    print("[WARN] Json file not found")
 
+                user_data.append(entry)
+                print("[INFO] feeds2: " + str(user_data))
+                with open(user_data_file, mode='w') as f:
+                    f.write(json.dumps(user_data, indent=4))
 
     # loop over the face detections
     for rect in rects:
