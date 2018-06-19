@@ -8,7 +8,6 @@ import dlib
 import os
 import json
 
-user_data_file = 'user_data.json'
 save_folder_name = int(input("Enter your id: "))
 user_name = input("Enter your name: ")
 
@@ -60,6 +59,7 @@ while True:
                 count_image = 0
 
                 user_data = []
+                user_data_file = 'user_data.json'
                 entry = {
                     "id": save_folder_name,
                     "name": user_name
@@ -68,12 +68,10 @@ while True:
                     with open(user_data_file) as input_file:
                         user_data = json.load(input_file)
                         input_file.close()
-                        print("[INFO] user_data1: " + str(user_data))
                 except IOError:
                     print("[WARN] Json file not found")
 
                 user_data.append(entry)
-                print("[INFO] user_data2: " + str(user_data))
                 with open(user_data_file, mode='w') as output_file:
                     output_file.write(json.dumps(user_data, indent=4))
                     output_file.close()
