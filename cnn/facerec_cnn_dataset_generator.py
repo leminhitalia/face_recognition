@@ -65,14 +65,14 @@ while True:
                     "name": user_name
                 }
                 try:
-                    with open(user_data_file) as feedsjson:
-                        user_data = json.load(feedsjson)
-                        print("[INFO] feeds1: " + str(user_data))
+                    with open(user_data_file) as json_data:
+                        user_data = json.load(json_data)
+                        print("[INFO] user_data1: " + str(user_data))
                 except IOError:
                     print("[WARN] Json file not found")
 
                 user_data.append(entry)
-                print("[INFO] feeds2: " + str(user_data))
+                print("[INFO] user_data2: " + str(user_data))
                 with open(user_data_file, mode='w') as f:
                     f.write(json.dumps(user_data, indent=4))
 
