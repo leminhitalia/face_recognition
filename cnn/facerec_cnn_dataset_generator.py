@@ -9,16 +9,8 @@ import os
 import json
 
 user_data_file = 'user_data.json'
-with open(user_data_file) as json_file:
-    user_data = json.load(json_file)
-
 save_folder_name = int(input("Enter your id: "))
-user_name = int(input("Enter your name: "))
-
-user_data.append({
-    "id": save_folder_name,
-    "name": user_name
-})
+user_name = input("Enter your name: ")
 
 base_dir = "face_images/"
 if save_folder_name:
@@ -66,8 +58,24 @@ while True:
             count_image += 1
             if count_image > 20:
                 count_image = 0
-                with open(user_data_file, 'w+') as outfile:
-                    json.dump(user_data, outfile, indent=4)
+                user_data = []
+                entry = {
+                    "id": save_folder_name,
+                    "name": user_name
+                }
+                if not os.path.isfile(user_data_file):
+                    user_data.append(entry)
+                    with open(user_data_file, mode='w') as f:
+                        f.write(json.dumps(user_data, indent=4))
+                else:
+                    with open(user_data_file) as feedsjson:
+                        user_data = json.load(feedsjson)
+                        print("[INFO] feeds1: " + str(user_data))
+                        user_data.append(entry)
+                        print("[INFO] feeds2: " + str(user_data))
+                        with open(user_data_file, mode='w') as f:
+                            f.write(json.dumps(user_data, indent=4))
+
 
     # loop over the face detections
     for rect in rects:
