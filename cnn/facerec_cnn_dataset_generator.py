@@ -65,16 +65,18 @@ while True:
                     "name": user_name
                 }
                 try:
-                    with open(user_data_file) as json_data:
-                        user_data = json.load(json_data)
+                    with open(user_data_file) as input_file:
+                        user_data = json.load(input_file)
+                        input_file.close()
                         print("[INFO] user_data1: " + str(user_data))
                 except IOError:
                     print("[WARN] Json file not found")
 
                 user_data.append(entry)
                 print("[INFO] user_data2: " + str(user_data))
-                with open(user_data_file, mode='w') as f:
-                    f.write(json.dumps(user_data, indent=4))
+                with open(user_data_file, mode='w') as output_file:
+                    output_file.write(json.dumps(user_data, indent=4))
+                    output_file.close()
 
     # loop over the face detections
     for rect in rects:
