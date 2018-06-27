@@ -69,7 +69,7 @@ while True:
                         user_data = json.load(input_file)
                         input_file.close()
                 except IOError:
-                    print("[WARN] Json file not found")
+                    print("[ERROR] Json file not found")
 
                 user_data.append(entry)
                 with open(user_data_file, mode='w') as output_file:
