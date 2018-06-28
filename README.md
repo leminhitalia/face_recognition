@@ -27,6 +27,8 @@ Don't need to read this:
 - What people can take away after joining the topic:
 - Main contents of the topic:
 
+pip install opencv-python
+
 pip install Keras
 
 pip install scikit-learn
@@ -35,10 +37,13 @@ pip install imutils
 
 pip install argparse
 
+https://www.tensorflow.org/install/install_windows#requirements_to_run_tensorflow_with_gpu_support
+
 pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.8.0-py3-none-any.whl
 
 Install CUDA:
 CUDA 9: https://developer.nvidia.com/cuda-downloads
 CUDA 8 (need): https://developer.nvidia.com/cuda-80-ga2-download-archive
 
-Install cuDNN: https://developer.nvidia.com/rdp/cudnn-download
+Install cuDNN: 
+cuDNN v5.1: https://developer.nvidia.com/rdp/cudnn-download
