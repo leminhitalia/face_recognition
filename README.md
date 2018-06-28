@@ -29,6 +29,8 @@ Don't need to read this:
 
 pip install opencv-python
 
+pip install dlib
+
 pip install Keras
 
 pip install scikit-learn
@@ -41,6 +43,7 @@ https://www.tensorflow.org/install/install_windows#requirements_to_run_tensorflo
 https://www.tensorflow.org/install/install_sources#tested_source_configurations
 
 pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.8.0-py3-none-any.whl
+pip install --upgrade https://storage.googleapis.com/tensorflow/mac/gpu/tensorflow-1.8.0-py3-none-any.whl
 
 Install CUDA:
 CUDA 9: https://developer.nvidia.com/cuda-downloads
