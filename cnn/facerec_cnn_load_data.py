@@ -38,7 +38,7 @@ for user in user_data:
         # convert image to gray
         img_data = cv2.cvtColor(img_data, cv2.COLOR_BGR2GRAY)
         img_data_list.append(img_data)
-        labels.append(user_id)
+        labels.append(str(user_id))
 
 img_data_list = np.array(img_data_list)
 img_data_list = img_data_list.astype('float32')
@@ -46,26 +46,26 @@ labels = np.array(labels, dtype='int64')
 # scale down(so easy to work with)
 img_data_list /= 255.0
 img_data_list = np.expand_dims(img_data_list, axis=4)
-# print("[DEBUG] img_data_list.shape" + img_data_list.shape)
-# print("[DEBUG] img_data_list.shape[0]" + img_data_list.shape[0])
-# print("[DEBUG] img_data_list.shape" + img_data_list.shape)
-# print("[DEBUG] labels.shape" + labels.shape)
+print("[DEBUG] img_data_list.shape = " + str(img_data_list.shape))
+print("[DEBUG] img_data_list.shape[0] = " + str(img_data_list.shape[0]))
+print("[DEBUG] img_data_list.shape = " + str(img_data_list.shape))
+print("[DEBUG] labels.shape = " + str(labels.shape))
 
 # convert class labels to on-hot encoding
 user_data_len = len(user_data)
-y = np_utils.to_categorical(labels, user_data_len)
-# print("[INFO] Y = " + Y)
+y = np_utils.to_categorical(labels, 1000)
+print("[INFO] y = " + str(y))
 
 # Shuffle the dataset
 x, y = shuffle(img_data_list, y, random_state=2)
 
 # Split the dataset
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=2)
-# print("[DEBUG] y_train.shape = " + y_train.shape)
-# print("[DEBUG] y_test.shape = " + y_test.shape)
+print("[DEBUG] y_train.shape = " + str(y_train.shape))
+print("[DEBUG] y_test.shape = " + str(y_test.shape))
 
 # Defining the model
 input_shape = img_data_list[0].shape
-print("[DEBUG]" + input_shape)
+print("[DEBUG]" + str(input_shape))
 
 #    return x_train, x_test, y_train, y_test, input_shape, user_data_len
