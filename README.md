@@ -39,9 +39,9 @@ pip install imutils
 
 pip install argparse
 
-pip3 install --upgrade tensorflow (Admin CMD)
+pip3 install --upgrade tensorflow (Admin CMD, upgrade pip version: python -m pip install --upgrade pip)
 
-pip3 install --upgrade tensorflow-gpu (Admin CMD)
+pip3 install --upgrade tensorflow-gpu (Admin CMD, upgrade pip version: python -m pip install --upgrade pip)
 
 Notes for Tensorflow: <br />
 https://www.tensorflow.org/install/install_windows#requirements_to_run_tensorflow_with_gpu_support
