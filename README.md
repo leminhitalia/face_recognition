@@ -38,6 +38,7 @@ pip install imutils
 pip install argparse
 
 https://www.tensorflow.org/install/install_windows#requirements_to_run_tensorflow_with_gpu_support
+https://www.tensorflow.org/install/install_sources#tested_source_configurations
 
 pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.8.0-py3-none-any.whl
 
@@ -45,5 +46,4 @@ Install CUDA:
 CUDA 9: https://developer.nvidia.com/cuda-downloads
 CUDA 8 (need): https://developer.nvidia.com/cuda-80-ga2-download-archive
 
-Install cuDNN: 
-cuDNN v5.1: https://developer.nvidia.com/rdp/cudnn-download
+Install cuDNN: https://developer.nvidia.com/rdp/cudnn-download
