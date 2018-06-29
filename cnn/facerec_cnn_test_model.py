@@ -54,7 +54,7 @@ while True:
     # detect faces in the grayayscale frame
     rects = detector(gray_frame, 0)
 
-    # loopop over the face detections
+    # loop over the face detections
     for rect in rects:
         faceAligned = fa.align(frame, gray_frame, rect)
         faceAligned = cv2.cvtColor(faceAligned, cv2.COLOR_BGR2GRAY)
