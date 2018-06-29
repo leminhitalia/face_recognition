@@ -71,6 +71,6 @@ def load_data(user_data_file, face_images_folder):
 
     # Defining the model
     input_shape = img_data_list[0].shape
-    print("[DEBUG]" + str(input_shape))
+    print("[DEBUG] input_shape" + str(input_shape))
 
     return x_train, x_test, y_train, y_test, input_shape, len(user_data)

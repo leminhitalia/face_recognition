@@ -30,7 +30,7 @@ lrate = 0.01
 decay = lrate/epochs
 sgd = SGD(lr=lrate, momentum=0.9, decay=decay, nesterov=False)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
-print("[DEBUG] model.summary() = " + model.summary())
+print("[DEBUG] model.summary() = " + str(model.summary()))
 
 # Fit the model
 model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=epochs, batch_size=32)
