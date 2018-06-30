@@ -56,11 +56,11 @@ def load_data(user_data_file, face_images_folder):
     print("[DEBUG] labels.shape = " + str(labels.shape))
 
     # convert class labels to on-hot encoding
-    y = np_utils.to_categorical(labels)
-    print("[INFO] y = " + str(y))
+    y_categorical = np_utils.to_categorical(labels)
+    print("[INFO] y_categorical = " + str(y_categorical))
 
     # Shuffle the dataset
-    x, y = shuffle(img_data_list, y, random_state=2)
+    x, y = shuffle(img_data_list, y_categorical, random_state=2)
 
     # Split the dataset
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=2)

@@ -22,7 +22,7 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
 model.add(Dense(512, activation='relu', kernel_constraint=maxnorm(3)))
 model.add(Dropout(0.5))
-model.add(Dense(user_data_len, activation='softmax'))
+model.add(Dense(978, activation='softmax'))
 
 # Compile model
 epochs = 25
