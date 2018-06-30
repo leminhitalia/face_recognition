@@ -5,7 +5,7 @@ import imutils
 import time
 import cv2
 import dlib
-import os
+import sys
 import numpy as np
 import json
 
@@ -40,6 +40,7 @@ try:
 except IOError:
     print("[ERROR] Json file not found")
 
+print("[DEBUG] user_data = " + str(user_data))
 # loop over the frames from the video stream
 while True:
     key = cv2.waitKey(1) & 0xFF
@@ -64,14 +65,20 @@ while True:
         faceAligned = np.expand_dims([faceAligned], axis=4)
 
         y_predict = loaded_model.predict(faceAligned)
-        print("[DEBUG] y_predict = " + y_predict)
-        print("[DEBUG] y_predict[0] = " + y_predict[0])
+        print("[DEBUG] y_predict = " + str(y_predict))
+        print("[DEBUG] y_predict[0] = " + str(y_predict[0]))
+        possible_user_name = "Unknown"
+        highest_ratio = 0
         for user_id, ratio in enumerate(y_predict[0]):
-            print("[DEBUG] user_id = " + user_id)
-            user_name = 'Unknown'
+            print("[DEBUG] user_id = " + str(user_id) + ", ratio = " + str(ratio))
+            user_name = "Unknown"
             for user in user_data:
                 if str(user_id) == str(user['id']):
                     user_name = user['name']
+                    if ratio >= highest_ratio:
+                        highest_ratio = ratio
+                        possible_user_name = user_name
+                        print("[DEBUG] possible_user_name = " + str(possible_user_name) + ", highest_ratio = " + str(highest_ratio))
                     break
             result = user_name + ': ' + str(int(ratio * 100)) + '%'
             cv2.putText(frame, result, (10, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1)
@@ -81,7 +88,9 @@ while True:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 255), 1)
         # draw person name
         result = np.argmax(y_predict, axis=1)
-        cv2.putText(frame, user_name, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+        print("[DEBUG] result = " + str(result))
+        print("[DEBUG] result[0] = " + str(result[0]))
+        cv2.putText(frame, possible_user_name, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 
         # show the frame
     cv2.imshow("Frame", frame)
@@ -89,4 +98,5 @@ while True:
 # do a bit of cleanup
 cv2.destroyAllWindows()
 vs.stop()
+sys.exit()
 

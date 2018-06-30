@@ -11,7 +11,7 @@ from cnn import facerec_cnn_load_data as data
 
 user_data_file = 'user_data.json'
 face_images_folder = 'face_images/'
-x_train, x_test, y_train, y_test, input_shape, user_data_len = data.load_data(user_data_file, face_images_folder)
+x_train, x_test, y_train, y_test, input_shape, num_classes = data.load_data(user_data_file, face_images_folder)
 
 model = Sequential()
 model = Sequential()
@@ -22,7 +22,7 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
 model.add(Dense(512, activation='relu', kernel_constraint=maxnorm(3)))
 model.add(Dropout(0.5))
-model.add(Dense(978, activation='softmax'))
+model.add(Dense(num_classes, activation='softmax'))
 
 # Compile model
 epochs = 25

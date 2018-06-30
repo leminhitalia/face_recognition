@@ -1,0 +1,417 @@
+G:\techcon\python-3.5.0\python.exe G:/techcon/demo/face_recognition/cnn/facerec_cnn_init_model.py
+Using TensorFlow backend.
+[DEBUG] user = {'id': 829, 'name': 'Y'}
+[DEBUG] user = {'id': 977, 'name': 'Hieu'}
+[DEBUG] img_data_list = [[[108 109 109 ... 112 112 112]
+  [109 110 110 ... 114 113 111]
+  [112 113 114 ... 114 114 112]
+  ...
+  [ 25  17  12 ...  63  64  65]
+  [ 19  15  12 ...  66  66  65]
+  [ 18  13  11 ...  67  65  65]]
+
+ [[109 108 108 ... 111 113 114]
+  [111 109 108 ... 111 111 111]
+  [110 110 109 ... 110 109 109]
+  ...
+  [ 13  11   9 ...  59  59  59]
+  [ 13  11   9 ...  61  61  61]
+  [ 11  10   9 ...  63  63  63]]
+
+ [[112 112 111 ... 114 114 114]
+  [111 111 110 ... 114 114 113]
+  [111 110 109 ... 113 112 111]
+  ...
+  [ 30  22  15 ...  60  60  61]
+  [ 26  19  13 ...  59  59  59]
+  [ 22  14  10 ...  59  59  60]]
+
+ ...
+
+ [[110 110 109 ... 103 103 103]
+  [111 110 109 ... 106 105 104]
+  [110 110 108 ... 107 106 104]
+  ...
+  [  0   0   0 ...  48  52  55]
+  [  0   0   1 ...  49  52  55]
+  [  1   1   2 ...  50  51  53]]
+
+ [[107 105 104 ...  75  73  74]
+  [107 106 105 ...  76  76  76]
+  [109 109 108 ...  77  76  77]
+  ...
+  [  0   0   0 ...   4   5   8]
+  [  0   0   0 ...   4   5   8]
+  [  0   0   0 ...   5   6   8]]
+
+ [[115 114 114 ... 116 116 116]
+  [113 112 113 ... 113 113 113]
+  [112 112 112 ... 110 111 110]
+  ...
+  [ 14   9   6 ...  61  62  64]
+  [ 11   7   6 ...  61  62  64]
+  [ 10   7   5 ...  60  60  61]]]
+[DEBUG] labels = [829 829 829 829 829 829 829 829 829 829 829 829 829 829 829 829 829 829
+ 829 829 829 977 977 977 977 977 977 977 977 977 977 977 977 977 977 977
+ 977 977 977 977 977 977]
+[DEBUG] img_data_list.shape = (42, 256, 256, 1)
+[DEBUG] img_data_list.shape[0] = 42
+[DEBUG] img_data_list.shape = (42, 256, 256, 1)
+[DEBUG] labels.shape = (42,)
+[INFO] y_categorical = [[0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 0. 0. 1.]
+ [0. 0. 0. ... 0. 0. 1.]
+ [0. 0. 0. ... 0. 0. 1.]]
+[DEBUG] x_train.shape = (33, 256, 256, 1)
+[DEBUG] x_test.shape = (9, 256, 256, 1)
+[DEBUG] y_train.shape = (33, 978)
+[DEBUG] y_test.shape = (9, 978)
+[DEBUG] num_classes = 978
+[DEBUG] input_shape(256, 256, 1)
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+conv2d_1 (Conv2D)            (None, 256, 256, 32)      320
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 256, 256, 32)      0
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 256, 256, 32)      9248
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 128, 128, 32)      0
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 524288)            0
+_________________________________________________________________
+dense_1 (Dense)              (None, 512)               268435968
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 512)               0
+_________________________________________________________________
+dense_2 (Dense)              (None, 978)               501714
+=================================================================
+Total params: 268,947,250
+Trainable params: 268,947,250
+Non-trainable params: 0
+_________________________________________________________________
+[DEBUG] model.summary() = None
+Train on 33 samples, validate on 9 samples
+Epoch 1/25
+2018-06-30 17:37:12.205486: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1356] Found device 0 with properties:
+name: GeForce GT 520M major: 2 minor: 1 memoryClockRate(GHz): 1.48
+pciBusID: 0000:01:00.0
+totalMemory: 1.00GiB freeMemory: 826.02MiB
+2018-06-30 17:37:12.205967: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1406] Ignoring visible gpu device (device: 0, name: GeForce GT 520M, pci bus id: 0000:01:00.0, compute capability: 2.1) with Cuda compute capability 2.1. The minimum required Cuda capability is 3.0.
+2018-06-30 17:37:12.206469: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-06-30 17:37:12.206744: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:929]      0
+2018-06-30 17:37:12.206924: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:942] 0:   N
+2018-06-30 17:37:12.354547: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:13.091764: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:13.753500: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:14.704097: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:15.301576: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:15.311857: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:20.513506: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:23.013216: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:39.357894: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:43.114784: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:44.445426: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 1s - loss: 6.9015 - acc: 0.0000e+002018-06-30 17:37:57.426849: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:58.682046: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:37:59.805255: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:38:00.389943: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 56s 2s/step - loss: 6.8811 - acc: 0.0000e+00 - val_loss: 4.6539 - val_acc: 0.5556
+Epoch 2/25
+2018-06-30 17:38:08.354800: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:38:20.868422: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:38:25.399044: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:38:26.513780: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 4.0941 - acc: 0.46882018-06-30 17:38:36.494363: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:38:37.138569: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:38:38.159875: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:38:38.769984: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 35s 1s/step - loss: 3.9701 - acc: 0.4848 - val_loss: 4.6633 - val_acc: 0.5556
+Epoch 3/25
+2018-06-30 17:38:43.009981: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:38:52.155945: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:38:54.202217: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:38:55.781962: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 6.4039 - acc: 0.46882018-06-30 17:39:07.319645: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:08.517868: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:09.633903: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:10.102751: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 31s 951ms/step - loss: 6.6982 - acc: 0.4545 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 4/25
+2018-06-30 17:39:14.430933: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:24.261533: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:27.587028: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:28.593776: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 7.5554 - acc: 0.53122018-06-30 17:39:38.730156: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:39.296980: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:40.295211: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:40.981972: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 30s 921ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 5/25
+2018-06-30 17:39:44.883569: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:51.851239: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:54.491187: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:39:55.806647: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 7.5554 - acc: 0.53122018-06-30 17:40:03.524311: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:04.179307: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:05.275858: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:05.956030: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 25s 763ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 6/25
+2018-06-30 17:40:09.931531: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:16.311409: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:18.111733: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:19.817904: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:27.704498: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:40:28.396829: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:29.497962: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:30.185651: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 24s 733ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 7/25
+2018-06-30 17:40:34.097004: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:40.961189: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:42.831681: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:44.900203: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 7.5554 - acc: 0.53122018-06-30 17:40:52.338330: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:52.991045: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:54.084452: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:40:54.766059: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 25s 751ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 8/25
+2018-06-30 17:40:58.878093: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:05.510516: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:07.539536: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:09.432686: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:41:17.448078: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:18.118643: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:19.224853: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:19.901239: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 25s 758ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 9/25
+2018-06-30 17:41:23.892322: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:30.235363: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:32.506961: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:33.862346: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 7.5554 - acc: 0.53122018-06-30 17:41:42.696625: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:43.283267: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:44.319080: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:44.935188: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 25s 755ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 10/25
+2018-06-30 17:41:48.805595: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:55.349872: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:57.952957: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:41:58.916797: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 7.5554 - acc: 0.53122018-06-30 17:42:08.051599: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:08.720689: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:09.833041: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:10.522689: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 26s 777ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 11/25
+2018-06-30 17:42:14.453996: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:22.526497: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:24.537197: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:25.405670: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 7.5554 - acc: 0.53122018-06-30 17:42:33.033625: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:33.732621: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:34.852882: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:35.529859: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 25s 761ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 12/25
+2018-06-30 17:42:39.565359: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:45.960373: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:49.565600: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:50.440513: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:42:58.667314: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:42:59.424211: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:00.586214: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:01.276489: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 26s 784ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 13/25
+2018-06-30 17:43:05.424988: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:12.355408: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:15.804766: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:16.904646: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:43:24.865354: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:25.556182: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:26.651301: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:27.345033: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 26s 786ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 14/25
+2018-06-30 17:43:31.370346: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:37.760155: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:40.679894: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:41.661923: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:43:50.136733: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:50.879233: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:52.094791: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:43:52.774989: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 25s 772ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 15/25
+2018-06-30 17:43:57.620094: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:04.917447: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:07.672604: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:08.662521: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:44:17.936667: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:18.638503: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:19.677851: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:20.285660: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 27s 829ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 16/25
+2018-06-30 17:44:24.219041: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:32.096279: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:34.500150: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:36.304386: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:44:44.748546: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:45.351275: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:46.384832: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:47.005158: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 27s 814ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 17/25
+2018-06-30 17:44:51.075506: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:44:57.349091: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:00.246800: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:01.918551: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:09.175910: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:45:09.872388: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:10.982702: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:11.706024: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 25s 748ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 18/25
+2018-06-30 17:45:15.758453: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:23.716140: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:26.386389: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:27.904556: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 7.5554 - acc: 0.53122018-06-30 17:45:36.809278: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:37.412281: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:38.470375: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:39.094381: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:43.079706: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 27s 828ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 19/25
+2018-06-30 17:45:50.987143: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:53.070858: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:45:54.719189: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 7.5554 - acc: 0.53122018-06-30 17:46:02.838844: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:03.588543: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:04.678172: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:05.340985: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 27s 803ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 20/25
+2018-06-30 17:46:09.601643: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:16.687047: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:19.347827: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:21.225855: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:46:28.562690: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:29.256502: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:30.360240: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:31.042595: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 26s 776ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 21/25
+2018-06-30 17:46:35.178298: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:41.833818: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:44.357740: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:46.901180: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 7.5554 - acc: 0.53122018-06-30 17:46:54.697211: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:55.429568: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:56.617105: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:46:57.379170: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 27s 804ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 22/25
+2018-06-30 17:47:01.699208: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:08.200559: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:10.939583: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:11.990370: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:47:21.193002: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:22.005669: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:23.217854: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:23.990828: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 27s 806ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 23/25
+2018-06-30 17:47:28.289487: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:36.886504: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:39.437424: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:40.455641: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:47:50.224510: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:50.814376: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:51.866005: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:47:52.559255: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 29s 866ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 24/25
+2018-06-30 17:47:57.047994: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:04.607370: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:07.426068: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:08.848318: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 7.5554 - acc: 0.53122018-06-30 17:48:17.668564: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:18.269286: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:19.280874: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:19.900984: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 27s 820ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+Epoch 25/25
+2018-06-30 17:48:23.964463: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:30.720305: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:33.893419: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:36.278819: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+32/33 [============================>.] - ETA: 0s - loss: 8.0590 - acc: 0.50002018-06-30 17:48:44.300751: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:44.994060: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:46.115755: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+2018-06-30 17:48:46.783935: W T:\src\github\tensorflow\tensorflow\core\framework\allocator.cc:101] Allocation of 1073741824 exceeds 10% of system memory.
+
+33/33 [==============================] - 27s 816ms/step - loss: 7.8148 - acc: 0.5152 - val_loss: 8.9545 - val_acc: 0.4444
+[DEBUG] Accuracy: 44.44%
+[INFO] Saved model to disk
+
+Process finished with exit code 0
