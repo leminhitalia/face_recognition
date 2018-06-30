@@ -29,10 +29,9 @@ pip3 install --upgrade tensorflow-gpu (Admin CMD, upgrade pip version: python -m
 ## For Tensorflow:
 - Tensorflow 1.8.0 may not work on Python 3.6, therefore, we should use Python 3.5 (see "Set up environment for Windows") <br />
 - Install CUDA and cuDNN: Check compatibility versions (Tested source configurations) https://www.tensorflow.org/install/install_sources
-    - CUDA 9: https://developer.nvidia.com/cuda-downloads <br />
-    - CUDA 8: https://developer.nvidia.com/cuda-80-ga2-download-archive
+    - CUDA 9.0: https://developer.nvidia.com/cuda-90-download-archive <br />
     - CUDA other version: Please find on Internet
-    - cuDNN: https://developer.nvidia.com/rdp/cudnn-download (must register a developer account on this site)
+    - cuDNN 7 for CUDA 9.0: https://developer.nvidia.com/rdp/cudnn-download (must register a developer account on this site)
 - Other resources to refer to Tensorflow:
     - https://www.tensorflow.org/install/install_windows#requirements_to_run_tensorflow_with_gpu_support <br />
     - https://www.tensorflow.org/install/install_sources#tested_source_configurations <br />
