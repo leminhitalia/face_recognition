@@ -26,13 +26,13 @@ pip install argparse <br />
 pip3 install --upgrade tensorflow (Admin CMD, upgrade pip version: python -m pip install --upgrade pip) <br />
 pip3 install --upgrade tensorflow-gpu (Admin CMD, upgrade pip version: python -m pip install --upgrade pip, require CUDA and cuDNN) <br />
 
-## For Tensorflow:
+## For Tensorflow: Check Tensorflow compatibility here https://www.tensorflow.org/install/install_sources (section: "Tested source configurations")
 - Tensorflow 1.8.0 may not work on Python 3.6, therefore, we should use Python 3.5 (see "Set up environment for Windows") <br />
 - Install CUDA and cuDNN: Check compatibility versions (Tested source configurations) https://www.tensorflow.org/install/install_sources
-    - CUDA 9: https://developer.nvidia.com/cuda-downloads <br />
-    - CUDA 8: https://developer.nvidia.com/cuda-80-ga2-download-archive
+    - CUDA 9.0: https://developer.nvidia.com/cuda-90-download-archive <br />
     - CUDA other version: Please find on Internet
-    - cuDNN: https://developer.nvidia.com/rdp/cudnn-download (must register a developer account on this site)
+    - cuDNN 7 for CUDA 9.0: https://developer.nvidia.com/rdp/cudnn-download (must register a developer account on this site)
+- The minimum required CUDA capability is 3.0, to check the CUDA capability of the current GPU on machine, please refer to https://en.wikipedia.org/wiki/CUDA#GPUs_supported
 - Other resources to refer to Tensorflow:
     - https://www.tensorflow.org/install/install_windows#requirements_to_run_tensorflow_with_gpu_support <br />
     - https://www.tensorflow.org/install/install_sources#tested_source_configurations <br />
