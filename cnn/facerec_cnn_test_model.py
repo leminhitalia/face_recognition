@@ -81,7 +81,8 @@ while True:
                         print("[DEBUG] possible_user_name = " + str(possible_user_name) + ", highest_ratio = " + str(highest_ratio))
                     break
             result = user_name + ': ' + str(int(ratio * 100)) + '%'
-            cv2.putText(frame, result, (10, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1)
+            print("[DEBUG] " + result)
+            # cv2.putText(frame, result, (10, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1)
 
         # draw rect around face
         (x, y, w, h) = face_utils.rect_to_bb(rect)

@@ -29,16 +29,19 @@ def load_data(user_data_file, face_images_folder):
         print("[DEBUG] user = " + str(user))
         user_id = user['id']
         dir_path = face_images_folder + str(user_id)
-        for img in os.listdir(dir_path):
-            name, ext = os.path.splitext(img)
-            if ext.lower() not in valid_images:
-                continue
+        if os.path.exists(dir_path):
+            for img in os.listdir(dir_path):
+                name, ext = os.path.splitext(img)
+                if ext.lower() not in valid_images:
+                    continue
 
-            img_data = cv2.imread(dir_path + '/' + img)
-            # convert image to gray
-            img_data = cv2.cvtColor(img_data, cv2.COLOR_BGR2GRAY)
-            img_data_list.append(img_data)
-            labels.append(str(user_id))
+                img_data = cv2.imread(dir_path + '/' + img)
+                # convert image to gray
+                img_data = cv2.cvtColor(img_data, cv2.COLOR_BGR2GRAY)
+                img_data_list.append(img_data)
+                labels.append(str(user_id))
+        else:
+            print("[ERROR] " + dir_path + " isn't exists.")
 
     img_data_list = np.array(img_data_list)
     print("[DEBUG] img_data_list = " + str(img_data_list))
