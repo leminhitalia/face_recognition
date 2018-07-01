@@ -72,6 +72,7 @@ while True:
                     print("[ERROR] Json file not found")
 
                 user_data.append(entry)
+                user_data = sorted(user_data, key=lambda user: user['id'], reverse=False)
                 with open(user_data_file, mode='w') as output_file:
                     output_file.write(json.dumps(user_data, indent=4))
                     output_file.close()
