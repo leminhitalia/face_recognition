@@ -57,14 +57,14 @@ while True:
 
     # loop over the face detections
     for rect in rects:
-        faceAligned = fa.align(frame, gray_frame, rect)
-        faceAligned = cv2.cvtColor(faceAligned, cv2.COLOR_BGR2GRAY)
-        faceAligned = np.array(faceAligned)
-        faceAligned = faceAligned.astype('float32')
-        faceAligned /= 255.0
-        faceAligned = np.expand_dims([faceAligned], axis=4)
+        face_aligned = fa.align(frame, gray_frame, rect)
+        face_aligned = cv2.cvtColor(face_aligned, cv2.COLOR_BGR2GRAY)
+        face_aligned = np.array(face_aligned)
+        face_aligned = face_aligned.astype('float32')
+        face_aligned /= 255.0
+        face_aligned = np.expand_dims([face_aligned], axis=4)
 
-        y_predict = loaded_model.predict(faceAligned)
+        y_predict = loaded_model.predict(face_aligned)
         print("[DEBUG] y_predict = " + str(y_predict))
         print("[DEBUG] y_predict[0] = " + str(y_predict[0]))
         possible_user_name = "Unknown"
