@@ -31,6 +31,7 @@ def load_data(user_data_file, face_images_folder):
         user_id = user['id']
         dir_path = face_images_folder + str(user_id)
         if os.path.exists(dir_path):
+            num_classes += 1
             for img in os.listdir(dir_path):
                 name, ext = os.path.splitext(img)
                 if ext.lower() not in valid_images:
@@ -42,7 +43,6 @@ def load_data(user_data_file, face_images_folder):
                 img_data_list.append(img_data)
                 user_index = user['index']
                 labels.append(str(user_index))
-                num_classes += 1
         else:
             print("[ERROR] " + dir_path + " isn't exists.")
 
@@ -76,7 +76,7 @@ def load_data(user_data_file, face_images_folder):
     print("[DEBUG] y_test.shape = " + str(y_test.shape))
 
     # num_classes = len(y_train[0])  # len(y_train.shape[1])
-    # print("[DEBUG] num_classes = " + str(num_classes))
+    print("[DEBUG] num_classes = " + str(num_classes))
 
     # Defining the model
     input_shape = img_data_list[0].shape
