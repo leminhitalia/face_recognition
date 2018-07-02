@@ -67,22 +67,18 @@ while True:
         y_predict = loaded_model.predict(face_aligned)
         print("[DEBUG] y_predict = " + str(y_predict))
         print("[DEBUG] y_predict[0] = " + str(y_predict[0]))
-        possible_user_name = "Unknown"
-        highest_ratio = 0
-        for user_id, ratio in enumerate(y_predict[0]):
-            print("[DEBUG] user_id = " + str(user_id) + ", ratio = " + str(ratio))
-            user_name = "Unknown"
-            for user in user_data:
-                if str(user_id) == str(user['id']):
-                    user_name = user['name']
-                    if ratio >= highest_ratio:
-                        highest_ratio = ratio
-                        possible_user_name = user_name
-                        print("[DEBUG] possible_user_name = " + str(possible_user_name) + ", highest_ratio = " + str(highest_ratio))
-                    break
+        for index, ratio in enumerate(y_predict[0]):
+            print("[DEBUG] user_index = " + str(index) + ", ratio = " + str(ratio))
+            user = user_data[index]
+            user_index = user['index']
+            user_name = user['name']
+            if str(index) != str(user_index):
+                user_name = "Unknown"
+                print("[ERROR] Incorrect predicting...index=" + str(index) + ", user_index=" + user_index)
+
             result = user_name + ': ' + str(int(ratio * 100)) + '%'
             print("[DEBUG] " + result)
-            # cv2.putText(frame, result, (10, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1)
+            cv2.putText(frame, result, (10, 15 * (index + 1)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1)
 
         # draw rect around face
         (x, y, w, h) = face_utils.rect_to_bb(rect)
@@ -91,7 +87,15 @@ while True:
         result = np.argmax(y_predict, axis=1)
         print("[DEBUG] result = " + str(result))
         print("[DEBUG] result[0] = " + str(result[0]))
-        cv2.putText(frame, possible_user_name, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+        user_index = result[0]
+        user_name = "Unknown"
+        try:
+            user = user_data[user_index]
+            user_name = user['name']
+        except IndexError:
+            print("[ERROR] IndexError: user_index out of range, user_index=" + user_index)
+
+        cv2.putText(frame, user_name, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 
         # show the frame
     cv2.imshow("Frame", frame)
