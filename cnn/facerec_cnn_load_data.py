@@ -25,6 +25,7 @@ def load_data(user_data_file, face_images_folder):
     img_data_list = []
     labels = []
     valid_images = [".jpg", ".gif", ".png"]
+    num_classes = 0
     for user in user_data:
         print("[DEBUG] user = " + str(user))
         user_id = user['id']
@@ -39,7 +40,9 @@ def load_data(user_data_file, face_images_folder):
                 # convert image to gray
                 img_data = cv2.cvtColor(img_data, cv2.COLOR_BGR2GRAY)
                 img_data_list.append(img_data)
-                labels.append(str(user_id))
+                user_index = user['index']
+                labels.append(str(user_index))
+                num_classes += 1
         else:
             print("[ERROR] " + dir_path + " isn't exists.")
 
@@ -59,7 +62,7 @@ def load_data(user_data_file, face_images_folder):
     print("[DEBUG] labels.shape = " + str(labels.shape))
 
     # convert class labels to on-hot encoding
-    y_categorical = np_utils.to_categorical(labels)
+    y_categorical = np_utils.to_categorical(labels, num_classes)
     print("[INFO] y_categorical = " + str(y_categorical))
 
     # Shuffle the dataset
