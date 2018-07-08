@@ -60,6 +60,7 @@ def load_data(user_data_file, face_images_folder):
     print("[DEBUG] img_data_list.shape[0] = " + str(img_data_list.shape[0]))
     print("[DEBUG] img_data_list.shape = " + str(img_data_list.shape))
     print("[DEBUG] labels.shape = " + str(labels.shape))
+    print("[DEBUG] num_classes = " + str(num_classes))
 
     # convert class labels to on-hot encoding
     y_categorical = np_utils.to_categorical(labels, num_classes)
@@ -76,7 +77,7 @@ def load_data(user_data_file, face_images_folder):
     print("[DEBUG] y_test.shape = " + str(y_test.shape))
 
     # num_classes = len(y_train[0])  # len(y_train.shape[1])
-    print("[DEBUG] num_classes = " + str(num_classes))
+    # print("[DEBUG] num_classes = " + str(num_classes))
 
     # Defining the model
     input_shape = img_data_list[0].shape
