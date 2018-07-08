@@ -37,6 +37,7 @@ model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=epochs, bat
 
 # Final evaluation of the model
 scores = model.evaluate(x_test, y_test, verbose=0)
+print("[DEBUG] Scores = " + str(scores))
 print("[DEBUG] Accuracy: %.2f%%" % (scores[1]*100))
 
 # serialize model to JSON
