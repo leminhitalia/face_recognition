@@ -1,7 +1,7 @@
 # face_recognition
 
 ## Set up environment for Windows: <br />
-1. Install Python 5: https://www.python.org/ftp/python/3.5.0/python-3.5.0-amd64.exe <br />
+1. Install Python 3.5: https://www.python.org/ftp/python/3.5.0/python-3.5.0-amd64.exe <br />
 2. Download Cmake for Windows and config Cmake path (EX: C:\Program Files\cmake-3.11.2-win64-x64\bin) in the PATH environment, recommend to download zip file: https://cmake.org/download/ <br />
 3. Download and install Microsoft Visual C++ Build Tools 2015: https://msdn.microsoft.com/en-us/library/ms235639.aspx
 
