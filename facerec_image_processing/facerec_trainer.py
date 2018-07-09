@@ -66,5 +66,5 @@ faces, ids = get_face_data_and_labels()
 # Train the model using the faces and IDs
 recognizer.train(faces, np.array(ids))
 
-# Save the model into trainer.yml
-recognizer.save('trainer/trainer.yml')
+# Save the model into train_data.yml
+recognizer.save('train_data/train_data.yml')

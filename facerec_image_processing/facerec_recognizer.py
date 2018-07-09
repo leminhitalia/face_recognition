@@ -10,10 +10,8 @@ import json
 # Create Local Binary Patterns Histograms for face recognition
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
-# assure_path_exists("trainer/")
-
 # Load the trained mode
-recognizer.read('trainer/trainer.yml')
+recognizer.read('train_data/train_data.yml')
 
 # Load prebuilt model for Frontal Face
 cascadePath = "classifiers/haarcascade_frontalface_default.xml"
