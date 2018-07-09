@@ -9,9 +9,6 @@ from PIL import Image
 
 import os
 
-dataset_folder_name = "face_images/"
-trainer_folder_name = "trainer/"
-
 # Create Local Binary Patterns Histograms for face recognization
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
@@ -70,4 +67,4 @@ faces, ids = get_face_data_and_labels()
 recognizer.train(faces, np.array(ids))
 
 # Save the model into trainer.yml
-recognizer.save(trainer_folder_name + 'trainer.yml')
+recognizer.save('trainer/trainer.yml')
