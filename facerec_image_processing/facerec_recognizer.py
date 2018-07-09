@@ -35,6 +35,8 @@ try:
 except IOError:
     print("[ERROR] Json file not found")
 
+print("[DEBUG] user_data = " + str(user_data))
+
 # Loop
 while True:
     # Read the video frame
@@ -55,12 +57,15 @@ while True:
         # Recognize the face belongs to which ID
         face_id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
 
-        print("[DEBUG] Id = " + str(face_id))
+        print("[DEBUG] face_id = " + str(face_id))
         print("[DEBUG] confidence = " + str(confidence))
 
         # Check the ID if exist
         for user in user_data:
-            if str(face_id) == user['id']:
+            user_id = user['id']
+            print("[DEBUG] user_id = " + str(user_id))
+            print("[DEBUG] str(face_id) == str(user_id) = " + str(face_id) == str(user_id))
+            if str(face_id) == str(user_id):
                 face_id = user['name']
                 break
             else:
