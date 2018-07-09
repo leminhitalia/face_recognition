@@ -27,8 +27,13 @@ cam = cv2.VideoCapture(0)
 
 # Read user data
 user_data_file = 'user_data/user_data.json'
-with open(user_data_file) as json_file:
-    user_data = json.load(json_file)
+user_data = []
+try:
+    with open(user_data_file) as input_file:
+        user_data = json.load(input_file)
+        input_file.close()
+except IOError:
+    print("[ERROR] Json file not found")
 
 # Loop
 while True:
@@ -48,18 +53,24 @@ while True:
         cv2.rectangle(im, (x - 20, y - 20), (x + w + 20, y + h + 20), (0, 255, 0), 4)
 
         # Recognize the face belongs to which ID
-        Id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
+        face_id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
 
-        print("[DEBUG] Id = " + str(Id))
+        print("[DEBUG] Id = " + str(face_id))
         print("[DEBUG] confidence = " + str(confidence))
 
         # Check the ID if exist
+        for user in user_data:
+            if str(face_id) == user['id']:
+                face_id = user['name']
+                break
+            else:
+                face_id = 'Unknown'
 
-        Id = str(Id) + " {0:.2f}%".format(round(100 - confidence, 2))
+        face_id = str(face_id) + " {0:.2f}%".format(round(100 - confidence, 2))
 
         # Put text describe who is in the picture
         cv2.rectangle(im, (x - 22, y - 90), (x + w + 22, y - 22), (0, 255, 0), -1)
-        cv2.putText(im, str(Id), (x, y - 40), font, 1, (255, 255, 255), 3)
+        cv2.putText(im, str(face_id), (x, y - 40), font, 1, (255, 255, 255), 3)
 
     # Display the video frame with the bounded rectangle
     cv2.imshow('Recognizer', im)
