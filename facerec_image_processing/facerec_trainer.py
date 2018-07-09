@@ -21,8 +21,8 @@ detector = cv2.CascadeClassifier("classifiers/haarcascade_frontalface_default.xm
 user_data_file = 'user_data/user_data.json'
 face_images_folder = 'face_images/'
 
-# Create method to get the images and label data
-def getImagesAndLabels():
+
+def get_face_data_and_labels():
 
     user_data = []
     try:
@@ -32,8 +32,8 @@ def getImagesAndLabels():
     except IOError:
         print("[ERROR] Json file not found")
 
-    faceSamples = []  # Initialize empty face sample
-    ids = []  # Initialize empty id
+    face_data = []  # Initialize empty face sample
+    face_labels = []  # Initialize empty id
     for user in user_data:
         print("[DEBUG] user = " + str(user))
         user_id = user['id']
@@ -42,29 +42,29 @@ def getImagesAndLabels():
         if os.path.exists(dir_path):
             for img in os.listdir(dir_path):
                 # Get the image and convert it to grayscale
-                PIL_img = Image.open(dir_path + '/' + img).convert('L')
+                pil_img = Image.open(dir_path + '/' + img).convert('L')
                 # PIL image to numpy array
-                img_numpy = np.array(PIL_img, 'uint8')
+                img_numpy = np.array(pil_img, 'uint8')
                 # Get the face from the training images
                 faces = detector.detectMultiScale(img_numpy)
                 # Loop for each face, append to their respective ID
                 for (x, y, w, h) in faces:
                     # Add the image to face samples
-                    faceSamples.append(img_numpy[y:y + h, x:x + w])
+                    face_data.append(img_numpy[y:y + h, x:x + w])
                     # Add the ID to IDs
-                    ids.append(user_id)
+                    face_labels.append(user_id)
         else:
             print("[ERROR] " + dir_path + " isn't exists.")
 
-    print("[DEBUG] faceSamples = " + str(faceSamples))
-    print("[DEBUG] ids = " + str(ids))
+    print("[DEBUG] faceSamples = " + str(face_data))
+    print("[DEBUG] ids = " + str(face_labels))
 
     # Pass the face array and IDs array
-    return faceSamples, ids
+    return face_data, face_labels
 
 
 # Get the faces and IDs
-faces, ids = getImagesAndLabels()
+faces, ids = get_face_data_and_labels()
 
 # Train the model using the faces and IDs
 recognizer.train(faces, np.array(ids))
