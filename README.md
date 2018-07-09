@@ -23,6 +23,8 @@ pip install Keras <br />
 pip install scikit-learn <br />
 pip install imutils <br />
 pip install argparse <br />
+pip install Pillow <br />
+pip install opencv-contrib-python <br />
 pip3 install --upgrade tensorflow (Admin CMD, upgrade pip version: python -m pip install --upgrade pip) <br />
 pip3 install --upgrade tensorflow-gpu (Admin CMD, upgrade pip version: python -m pip install --upgrade pip, require CUDA and cuDNN) <br />
 
