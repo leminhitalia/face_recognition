@@ -7,7 +7,7 @@ from keras.optimizers import SGD
 from keras.layers.convolutional import Conv2D
 from keras.layers.convolutional import MaxPooling2D
 
-from cnn import facerec_cnn_load_data as data
+from facerec_cnn import facerec_cnn_load_data as data
 
 user_data_file = 'user_data.json'
 face_images_folder = 'face_images/'
