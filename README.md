@@ -1,4 +1,4 @@
-# face_recognition with techniques: CNN vs Image Processing
+# Face Recognition techniques: CNN vs Image Processing
 
 ## Set up environment for Windows: <br />
 1. Install Python 3.5: https://www.python.org/ftp/python/3.5.0/python-3.5.0-amd64.exe <br />
