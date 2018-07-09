@@ -1,37 +1,42 @@
 [
     {
-        "name": "Nhien",
+        "index": 0,
         "id": 1,
-        "index": 0
+        "name": "Nhien"
     },
     {
-        "name": "Ronaldo",
+        "index": 1,
         "id": 2,
-        "index": 1
+        "name": "Ronaldo"
     },
     {
-        "name": "Messi",
+        "index": 2,
         "id": 3,
-        "index": 2
+        "name": "Messi"
     },
     {
-        "name": "Rathanak",
+        "index": 3,
         "id": 4,
-        "index": 3
+        "name": "Rathanak"
     },
     {
-        "name": "YMinhLe",
+        "index": 4,
         "id": 829,
-        "index": 4
+        "name": "YMinhLe"
     },
     {
-        "name": "Hieu",
+        "index": 5,
+        "id": 829,
+        "name": "YMinhLe"
+    },
+    {
+        "index": 6,
         "id": 977,
-        "index": 5
+        "name": "Hieu"
     },
     {
-        "name": "ManPham",
+        "index": 7,
         "id": 1293,
-        "index": 6
+        "name": "ManPham"
     }
 ]
