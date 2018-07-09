@@ -4,19 +4,13 @@ import cv2
 # Import numpy for matrices calculations
 import numpy as np
 
-import os, json
-
-
-def assure_path_exists(path):
-    dir = os.path.dirname(path)
-    if not os.path.exists(dir):
-        os.makedirs(dir)
-
+import os
+import json
 
 # Create Local Binary Patterns Histograms for face recognition
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
-assure_path_exists("trainer/")
+# assure_path_exists("trainer/")
 
 # Load the trained mode
 recognizer.read('trainer/trainer.yml')
@@ -34,10 +28,8 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 cam = cv2.VideoCapture(0)
 
 # Read user data
-user_data_folder = 'user_data/'
-assure_path_exists(user_data_folder)
-user_data_file = 'user_data.json'
-with open(user_data_folder + user_data_file) as json_file:
+user_data_file = 'user_data/user_data.json'
+with open(user_data_file) as json_file:
     user_data = json.load(json_file)
 
 # Loop
@@ -60,16 +52,12 @@ while True:
         # Recognize the face belongs to which ID
         Id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
 
-        # Check the ID if exist
-        if Id is not None:
-            for user in user_data:
-                if str(Id) == str(user['id']):
-                    Id = user['name']
-                    break
-        else:
-            Id = 'Unknown'
+        print("[DEBUG] Id = " + str(Id))
+        print("[DEBUG] confidence = " + str(confidence))
 
-        Id = Id + " {0:.2f}%".format(round(100 - confidence, 2))
+        # Check the ID if exist
+
+        Id = str(Id) + " {0:.2f}%".format(round(100 - confidence, 2))
 
         # Put text describe who is in the picture
         cv2.rectangle(im, (x - 22, y - 90), (x + w + 22, y - 22), (0, 255, 0), -1)
