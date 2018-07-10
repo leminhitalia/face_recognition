@@ -56,28 +56,29 @@ while True:
 
         # Recognize the face belongs to which ID
         face_id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
+        face_id = str(face_id)
 
-        print("[DEBUG] face_id = " + str(face_id))
+        print("[DEBUG] face_id = " + face_id)
         print("[DEBUG] confidence = " + str(confidence))
 
         # Check the ID if exist
         for user in user_data:
-            user_id = user['id']
-            print("[DEBUG] user_id = " + str(user_id))
-            print("[DEBUG] str(face_id) vs str(user_id) = " + str(face_id) == str(user_id))
+            user_id = str(user['id'])
+            print("[DEBUG] user_id = " + user_id)
+            print("[DEBUG] face_id vs user_id = " + face_id == user_id)
 
-            if str(face_id) == str(user_id):
+            if face_id == user_id:
                 face_id = user['name']
                 break
             else:
                 face_id = 'Unknown'
             print("[DEBUG] Found user_name = " + face_id)
 
-        face_id = str(face_id) + " {0:.2f}%".format(round(100 - confidence, 2))
+        face_id = face_id + " {0:.2f}%".format(round(100 - confidence, 2))
 
         # Put text describe who is in the picture
         cv2.rectangle(im, (x - 22, y - 90), (x + w + 22, y - 22), (0, 255, 0), -1)
-        cv2.putText(im, str(face_id), (x, y - 40), font, 1, (255, 255, 255), 3)
+        cv2.putText(im, face_id, (x, y - 40), font, 1, (255, 255, 255), 3)
 
     # Display the video frame with the bounded rectangle
     cv2.imshow('Recognizer', im)
