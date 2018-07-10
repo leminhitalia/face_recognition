@@ -58,13 +58,12 @@ while True:
         face_id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
         face_id = str(face_id)
 
-        print("[DEBUG] face_id = " + face_id)
         print("[DEBUG] confidence = " + str(confidence))
 
         # Check the ID if exist
         for user in user_data:
             user_id = str(user['id'])
-            print("[DEBUG] user_id = " + user_id)
+            print("[DEBUG] user_id = " + user_id + ", face_id = " + face_id)
             print("[DEBUG] face_id vs user_id = " + face_id == user_id)
             print("[DEBUG] type(face_id) = " + str(type(face_id)))
             print("[DEBUG] type(user_id) = " + str(type(user_id)))
