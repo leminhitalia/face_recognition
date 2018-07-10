@@ -66,6 +66,8 @@ while True:
             user_id = str(user['id'])
             print("[DEBUG] user_id = " + user_id)
             print("[DEBUG] face_id vs user_id = " + face_id == user_id)
+            print("[DEBUG] type(face_id) = " + str(type(face_id)))
+            print("[DEBUG] type(user_id) = " + str(type(user_id)))
 
             if face_id == user_id:
                 face_id = user['name']
@@ -81,7 +83,7 @@ while True:
         cv2.putText(im, face_id, (x, y - 40), font, 1, (255, 255, 255), 3)
 
     # Display the video frame with the bounded rectangle
-    cv2.imshow('Recognizer', im)
+    cv2.imshow('Face Recognition Window', im)
 
     # If 'q' is pressed, close program
     if cv2.waitKey(10) & 0xFF == ord('q'):
