@@ -61,19 +61,18 @@ while True:
         print("[DEBUG] face_id = " + face_id + "confidence = " + str(confidence))
 
         # Check the ID if exist
+        is_found_user = False
         for user in user_data:
             user_id = str(user['id'])
-            print("[DEBUG] user_id = " + user_id + ", face_id = " + face_id)
-            print("[DEBUG] face_id vs user_id = " + face_id == user_id)
-            print("[DEBUG] type(face_id) = " + str(type(face_id)))
-            print("[DEBUG] type(user_id) = " + str(type(user_id)))
+            print("[DEBUG] user_id = " + user_id + ", face_id = " + face_id + ", face_id vs user_id = " + face_id == user_id)
 
-            if face_id != user_id:
-                face_id = 'Unknown'
-            else:
+            if face_id == user_id:
                 face_id = user['name']
+                is_found_user = True
                 break
-            print("[DEBUG] Found user_name = " + face_id)
+
+        if not is_found_user:
+            face_id = 'Unknown'
 
         face_id = face_id + " {0:.2f}%".format(round(100 - confidence, 2))
 
