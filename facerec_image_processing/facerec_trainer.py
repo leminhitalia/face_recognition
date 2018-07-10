@@ -53,8 +53,8 @@ def get_face_data_and_labels():
         else:
             print("[ERROR] " + dir_path + " isn't exists.")
 
-    print("[DEBUG] faceSamples = " + str(face_data))
-    print("[DEBUG] ids = " + str(face_labels))
+    print("[DEBUG] face_data = " + str(face_data))
+    print("[DEBUG] face_labels = " + str(face_labels))
 
     # Pass the face array and IDs array
     return face_data, face_labels
