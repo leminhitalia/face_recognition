@@ -64,15 +64,14 @@ while True:
         for user in user_data:
             user_id = user['id']
             print("[DEBUG] user_id = " + str(user_id))
-            print("[DEBUG] str(face_id) == str(user_id) = " + str(face_id) == str(user_id))
-            '''
+            print("[DEBUG] str(face_id) vs str(user_id) = " + str(face_id) == str(user_id))
+
             if str(face_id) == str(user_id):
                 face_id = user['name']
                 break
             else:
                 face_id = 'Unknown'
-            '''
-
+            print("[DEBUG] Found user_name = " + face_id)
         face_id = str(face_id) + " {0:.2f}%".format(round(100 - confidence, 2))
 
         # Put text describe who is in the picture
