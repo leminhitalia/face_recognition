@@ -88,7 +88,7 @@ while True:
     # loop over the face detections
     for rect in rects:
         (x, y, w, h) = face_utils.rect_to_bb(rect)
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 255), 1)
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
     # show the frame
     cv2.imshow("Face Detection Window - S: Save/Capture, Q: Quit", frame)

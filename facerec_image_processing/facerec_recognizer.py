@@ -71,8 +71,8 @@ while True:
         face_id = face_id + " {0:.2f}%".format(round(100 - confidence, 2))
 
         # Put text describe who is in the picture
-        cv2.rectangle(im, (x - 22, y - 90), (x + w + 22, y - 22), (0, 255, 0), -1)
-        cv2.putText(im, face_id, (x, y - 40), font, 1, (255, 255, 255), 3)
+        cv2.rectangle(im, (x - 22, y - 80), (x + w + 22, y - 22), (0, 255, 0), -1)
+        cv2.putText(im, face_id, (x - 15, y - 35), font, 1, (255, 255, 255), 3)
 
     # Display the video frame with the bounded rectangle
     cv2.imshow('Face Recognition Window - Q: Quit', im)
