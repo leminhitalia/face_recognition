@@ -65,12 +65,13 @@ while True:
             user_id = user['id']
             print("[DEBUG] user_id = " + str(user_id))
             print("[DEBUG] str(face_id) == str(user_id) = " + str(face_id) == str(user_id))
-            '''if str(face_id) == str(user_id):
+            '''
+            if str(face_id) == str(user_id):
                 face_id = user['name']
                 break
             else:
                 face_id = 'Unknown'
-                '''
+            '''
 
         face_id = str(face_id) + " {0:.2f}%".format(round(100 - confidence, 2))
 
