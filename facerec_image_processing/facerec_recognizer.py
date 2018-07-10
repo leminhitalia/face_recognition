@@ -1,10 +1,4 @@
-# Import OpenCV2 for image processing
 import cv2
-
-# Import numpy for matrices calculations
-import numpy as np
-
-import os
 import json
 
 # Create Local Binary Patterns Histograms for face recognition

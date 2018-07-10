@@ -1,12 +1,7 @@
-# Import OpenCV2 for image processing
-# Import os for file path
 import cv2
 import json
-# Import numpy for matrix calculation
 import numpy as np
-# Import Python Image Library (PIL)
 from PIL import Image
-
 import os
 
 # Create Local Binary Patterns Histograms for face recognization
