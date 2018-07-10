@@ -7,6 +7,7 @@ import cv2
 import dlib
 import os
 import json
+import datetime
 
 save_folder_name = int(input("Enter your id: "))
 user_name = input("Enter your name: ")
@@ -25,7 +26,6 @@ fa = FaceAligner(predictor, desiredFaceWidth=256)
 print("[INFO] Camera sensor warming up...")
 vs = VideoStream().start()
 time.sleep(2.0)
-count_image = 0
 
 # loop over the frames from the video stream
 while True:
@@ -39,50 +39,51 @@ while True:
     # detect faces in the gray scale frame
     rects = detector(gray_frame, 0)
 
-
     key = cv2.waitKey(1) & 0xFF
     # if the `q` key was pressed, break from the loop
     if key == ord("q"):
+        user_data = []
+        user_data_file = 'user_data/user_data.json'
+        entry = {
+            "id": save_folder_name,
+            "name": user_name
+        }
+        try:
+            with open(user_data_file) as input_file:
+                user_data = json.load(input_file)
+                input_file.close()
+        except IOError:
+            print("[ERROR] Json file not found")
+
+        is_exist_user = False
+        for user in user_data:
+            if str(save_folder_name) == str(user['id']):
+                is_exist_user = True
+                break
+
+        print("[DEBUG] is_exist_user =" + str(is_exist_user))
+        if not is_exist_user:
+            user_data.append(entry)
+
+        user_data = sorted(user_data, key=lambda user_key: user_key['id'], reverse=False)
+        print("[DEBUG] user_date with index =" + str(user_data))
+
+        with open(user_data_file, mode='w') as output_file:
+            output_file.write(json.dumps(user_data, indent=4))
+            output_file.close()
+
         break
 
     # if the `s` key was pressed save the first found face
     if key == ord('s'):
         if len(rects) > 0:
             faceAligned = fa.align(frame, gray_frame, rects[0])
-            image_name = base_dir + str(count_image) + ".png"
+            image_name = base_dir + str(datetime.datetime.now()).replace(" ", "_").replace(":", ".") + ".png"
+            print("[DEBUG] image_name =" + str(image_name))
             # save image
             cv2.imwrite(image_name, faceAligned)
             # show image
             cv2.imshow(image_name, faceAligned)
-            count_image += 1
-            if count_image > 20:
-                count_image = 0
-
-                user_data = []
-                user_data_file = 'user_data/user_data.json'
-                entry = {
-                    "id": save_folder_name,
-                    "name": user_name
-                }
-                try:
-                    with open(user_data_file) as input_file:
-                        user_data = json.load(input_file)
-                        input_file.close()
-                except IOError:
-                    print("[ERROR] Json file not found")
-
-                user_data.append(entry)
-                user_data = sorted(user_data, key=lambda user_key: user_key['id'], reverse=False)
-
-                for index, user in enumerate(user_data):
-                    user['index'] = index
-                    print("[DEBUG] user with index =" + str(user))
-
-                print("[DEBUG] user_date with index =" + str(user_data))
-
-                with open(user_data_file, mode='w') as output_file:
-                    output_file.write(json.dumps(user_data, indent=4))
-                    output_file.close()
 
     # loop over the face detections
     for rect in rects:
