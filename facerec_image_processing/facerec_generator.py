@@ -91,7 +91,7 @@ while True:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 255), 1)
 
     # show the frame
-    cv2.imshow("Frame", frame)
+    cv2.imshow("Face Detection Window - S: Save/Capture, Q: Quit", frame)
 
 # do a bit of cleanup
 cv2.destroyAllWindows()

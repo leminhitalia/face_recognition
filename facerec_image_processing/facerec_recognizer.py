@@ -75,7 +75,7 @@ while True:
         cv2.putText(im, face_id, (x, y - 40), font, 1, (255, 255, 255), 3)
 
     # Display the video frame with the bounded rectangle
-    cv2.imshow('Face Recognition Window', im)
+    cv2.imshow('Face Recognition Window - Q: Quit', im)
 
     # If 'q' is pressed, close program
     if cv2.waitKey(10) & 0xFF == ord('q'):
