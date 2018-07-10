@@ -76,9 +76,9 @@ while True:
 
                 for index, user in enumerate(user_data):
                     user['index'] = index
-                    print("[DEBUG] user with index =" + str(user))
+                    print("[DEBUG] user with index = {}".format(user))
 
-                print("[DEBUG] user_date with index =" + str(user_data))
+                print("[DEBUG] user_date with index = {}".format(user_data))
 
                 with open(user_data_file, mode='w') as output_file:
                     output_file.write(json.dumps(user_data, indent=4))

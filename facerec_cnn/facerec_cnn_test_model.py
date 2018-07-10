@@ -40,7 +40,7 @@ try:
 except IOError:
     print("[ERROR] Json file not found")
 
-print("[DEBUG] user_data = " + str(user_data))
+print("[DEBUG] user_data = {}".format(user_data))
 # loop over the frames from the video stream
 while True:
     key = cv2.waitKey(1) & 0xFF
@@ -65,19 +65,19 @@ while True:
         face_aligned = np.expand_dims([face_aligned], axis=4)
 
         y_predict = loaded_model.predict(face_aligned)
-        print("[DEBUG] y_predict = " + str(y_predict))
-        print("[DEBUG] y_predict[0] = " + str(y_predict[0]))
+        print("[DEBUG] y_predict = {}".format(y_predict))
+        print("[DEBUG] y_predict[0] = {}".format(y_predict[0]))
         for index, ratio in enumerate(y_predict[0]):
-            print("[DEBUG] user_index = " + str(index) + ", ratio = " + str(ratio))
+            print("[DEBUG] user_index = {}, , ratio = {}".format(index, ratio))
             user = user_data[index]
             user_index = user['index']
             user_name = user['name']
             if str(index) != str(user_index):
                 user_name = "Unknown"
-                print("[ERROR] Incorrect predicting...index=" + str(index) + ", user_index=" + user_index)
+                print("[ERROR] Incorrect predicting...index = {},  user_index = {}".format(index, user_index))
 
             result = user_name + ': ' + str(int(ratio * 100)) + '%'
-            print("[DEBUG] " + result)
+            print("[DEBUG] result = {}".format(result))
             cv2.putText(frame, result, (10, 15 * (index + 1)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1)
 
         # draw rect around face
@@ -85,15 +85,15 @@ while True:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 255), 1)
         # draw person name
         result = np.argmax(y_predict, axis=1)
-        print("[DEBUG] result = " + str(result))
-        print("[DEBUG] result[0] = " + str(result[0]))
+        print("[DEBUG] result = {}".format(result))
+        print("[DEBUG] result[0] = {}".format(result[0]))
         user_index = result[0]
         user_name = "Unknown"
         try:
             user = user_data[user_index]
             user_name = user['name']
         except IndexError:
-            print("[ERROR] IndexError: user_index out of range, user_index=" + user_index)
+            print("[ERROR] IndexError: user_index out of range, user_index = {}".format(user_index))
 
         cv2.putText(frame, user_name, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 

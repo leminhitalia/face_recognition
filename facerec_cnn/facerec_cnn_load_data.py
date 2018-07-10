@@ -27,7 +27,7 @@ def load_data(user_data_file, face_images_folder):
     valid_images = [".jpg", ".gif", ".png"]
     num_classes = 0
     for user in user_data:
-        print("[DEBUG] user = " + str(user))
+        print("[DEBUG] user = {}".format(user))
         user_id = user['id']
         dir_path = face_images_folder + str(user_id)
         if os.path.exists(dir_path):
@@ -44,43 +44,40 @@ def load_data(user_data_file, face_images_folder):
                 user_index = user['index']
                 labels.append(str(user_index))
         else:
-            print("[ERROR] " + dir_path + " isn't exists.")
+            print("[ERROR] {} isn't exists.".format(dir_path))
 
     img_data_list = np.array(img_data_list)
-    print("[DEBUG] img_data_list = " + str(img_data_list))
+    print("[DEBUG] img_data_list = {}".format(img_data_list))
     img_data_list = img_data_list.astype('float32')
 
     labels = np.array(labels, dtype='int64')
-    print("[DEBUG] labels = " + str(labels))
+    print("[DEBUG] labels = {}".format(labels))
 
     # scale down(so easy to work with)
     img_data_list /= 255.0
     img_data_list = np.expand_dims(img_data_list, axis=4)
-    print("[DEBUG] img_data_list.shape = " + str(img_data_list.shape))
-    print("[DEBUG] img_data_list.shape[0] = " + str(img_data_list.shape[0]))
-    print("[DEBUG] img_data_list.shape = " + str(img_data_list.shape))
-    print("[DEBUG] labels.shape = " + str(labels.shape))
-    print("[DEBUG] num_classes = " + str(num_classes))
+    print("[DEBUG] img_data_list.shape = {}".format(img_data_list.shape))
+    print("[DEBUG] img_data_list.shape[0] = {}".format(img_data_list.shape[0]))
+    print("[DEBUG] img_data_list.shape = {}".format(img_data_list.shape))
+    print("[DEBUG] labels.shape = {}".format(labels.shape))
+    print("[DEBUG] num_classes = {}".format(num_classes))
 
     # convert class labels to on-hot encoding
     y_categorical = np_utils.to_categorical(labels, num_classes)
-    print("[INFO] y_categorical = " + str(y_categorical))
+    print("[INFO] y_categorical = {}".format(y_categorical))
 
     # Shuffle the dataset
     x, y = shuffle(img_data_list, y_categorical, random_state=2)
 
     # Split the dataset
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=2)
-    print("[DEBUG] x_train.shape = " + str(x_train.shape))
-    print("[DEBUG] x_test.shape = " + str(x_test.shape))
-    print("[DEBUG] y_train.shape = " + str(y_train.shape))
-    print("[DEBUG] y_test.shape = " + str(y_test.shape))
-
-    # num_classes = len(y_train[0])  # len(y_train.shape[1])
-    # print("[DEBUG] num_classes = " + str(num_classes))
+    print("[DEBUG] x_train.shape = {}".format(x_train.shape))
+    print("[DEBUG] x_test.shape = {}".format(x_test.shape))
+    print("[DEBUG] y_train.shape = {}".format(y_train.shape))
+    print("[DEBUG] y_test.shape = {}".format(y_test.shape))
 
     # Defining the model
     input_shape = img_data_list[0].shape
-    print("[DEBUG] input_shape" + str(input_shape))
+    print("[DEBUG] input_shape = {}".format(input_shape))
 
     return x_train, x_test, y_train, y_test, input_shape, num_classes
