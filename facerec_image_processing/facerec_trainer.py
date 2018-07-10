@@ -32,10 +32,10 @@ def get_face_data_and_labels():
     face_data = []  # Initialize empty face sample
     face_labels = []  # Initialize empty id
     for user in user_data:
-        print("[DEBUG] user = " + str(user))
+        print("[DEBUG] user = {}".format(user))
         user_id = user['id']
         dir_path = face_images_folder + str(user_id)
-        print("[DEBUG] dir_path = " + str(dir_path))
+        print("[DEBUG] dir_path = {}".format(dir_path))
         if os.path.exists(dir_path):
             for img in os.listdir(dir_path):
                 # Get the image and convert it to grayscale
@@ -51,10 +51,10 @@ def get_face_data_and_labels():
                     # Add the ID to IDs
                     face_labels.append(user_id)
         else:
-            print("[ERROR] " + dir_path + " isn't exists.")
+            print("[ERROR] {} isn't exists.".format(dir_path))
 
-    print("[DEBUG] face_data = " + str(face_data))
-    print("[DEBUG] face_labels = " + str(face_labels))
+    print("[DEBUG] face_data = {}".format(face_data))
+    print("[DEBUG] face_labels = {}".format(face_labels))
 
     # Pass the face array and IDs array
     return face_data, face_labels

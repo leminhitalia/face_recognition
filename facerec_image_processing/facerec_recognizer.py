@@ -35,7 +35,7 @@ try:
 except IOError:
     print("[ERROR] Json file not found")
 
-print("[DEBUG] user_data = " + str(user_data))
+print("[DEBUG] user_data = {} ".format(user_data))
 
 # Loop
 while True:
@@ -58,7 +58,7 @@ while True:
         face_id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
         face_id = str(face_id)
 
-        print("[DEBUG] face_id = " + face_id + ", confidence = " + str(confidence))
+        print("[DEBUG] face_id = {}, confidence =  {}".format(face_id, confidence))
 
         # Check the ID if exist
         is_found_user = False

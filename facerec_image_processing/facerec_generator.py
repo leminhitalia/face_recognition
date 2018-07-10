@@ -61,12 +61,12 @@ while True:
                 is_exist_user = True
                 break
 
-        print("[DEBUG] is_exist_user =" + str(is_exist_user))
+        print("[DEBUG] is_exist_user = {}".format(is_exist_user))
         if not is_exist_user:
             user_data.append(entry)
 
         user_data = sorted(user_data, key=lambda user_key: user_key['id'], reverse=False)
-        print("[DEBUG] user_date with index =" + str(user_data))
+        print("[DEBUG] user_date with index = {}".format(user_data))
 
         with open(user_data_file, mode='w') as output_file:
             output_file.write(json.dumps(user_data, indent=4))
@@ -79,7 +79,7 @@ while True:
         if len(rects) > 0:
             faceAligned = fa.align(frame, gray_frame, rects[0])
             image_name = base_dir + str(datetime.datetime.now()).replace(" ", "_").replace(":", ".") + ".png"
-            print("[DEBUG] image_name =" + str(image_name))
+            print("[DEBUG] image_name = {}".format(image_name))
             # save image
             cv2.imwrite(image_name, faceAligned)
             # show image
