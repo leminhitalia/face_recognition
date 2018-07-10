@@ -64,7 +64,7 @@ while True:
         is_found_user = False
         for user in user_data:
             user_id = str(user['id'])
-            "{}, {}, {}, {}".format("DEBUG", user_id, face_id, face_id == user_id)
+            print("[DEBUG] user_id = " + user_id + ", face_id = " + face_id + ", face_id equals user_id = " + str(face_id == user_id))
 
             if face_id == user_id:
                 face_id = user['name']
