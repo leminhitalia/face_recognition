@@ -72,6 +72,7 @@ while True:
             else:
                 face_id = 'Unknown'
             print("[DEBUG] Found user_name = " + face_id)
+
         face_id = str(face_id) + " {0:.2f}%".format(round(100 - confidence, 2))
 
         # Put text describe who is in the picture
