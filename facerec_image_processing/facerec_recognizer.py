@@ -68,11 +68,11 @@ while True:
             print("[DEBUG] type(face_id) = " + str(type(face_id)))
             print("[DEBUG] type(user_id) = " + str(type(user_id)))
 
-            if face_id == user_id:
+            if face_id != user_id:
+                face_id = 'Unknown'
+            else:
                 face_id = user['name']
                 break
-            else:
-                face_id = 'Unknown'
             print("[DEBUG] Found user_name = " + face_id)
 
         face_id = face_id + " {0:.2f}%".format(round(100 - confidence, 2))
