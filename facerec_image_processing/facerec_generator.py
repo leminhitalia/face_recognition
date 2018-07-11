@@ -28,14 +28,14 @@ vs = cv2.VideoCapture(0)
 # loop over the frames from the video stream
 while True:
     # grab the frame from the threaded video stream, resize it to
-    # have a maximum width of 600 pixels, and convert it to
+    # have a maximum width of 800 pixels, and convert it to
     # gray scale
     ret, frame = vs.read()
     frame = imutils.resize(frame, width=800)
     # height, width = frame.shape[:2]
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     # detect faces in the gray scale frame
-    rects = detector(gray_frame, 0)
+    faces = detector(gray_frame, 0)
 
     key = cv2.waitKey(1) & 0xFF
     # if the `q` key was pressed, break from the loop
@@ -74,8 +74,8 @@ while True:
 
     # if the `s` key was pressed save the first found face
     if key == ord('s'):
-        if len(rects) > 0:
-            faceAligned = fa.align(frame, gray_frame, rects[0])
+        if len(faces) > 0:
+            faceAligned = fa.align(frame, gray_frame, faces[0])
             image_name = base_dir + str(datetime.datetime.now()).replace(" ", "_").replace(":", ".") + ".png"
             print("[DEBUG] image_name = {}".format(image_name))
             # save image
@@ -84,8 +84,8 @@ while True:
             cv2.imshow(image_name, faceAligned)
 
     # loop over the face detections
-    for rect in rects:
-        (x, y, w, h) = face_utils.rect_to_bb(rect)
+    for face in faces:
+        (x, y, w, h) = face_utils.rect_to_bb(face)
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
     # show the frame
