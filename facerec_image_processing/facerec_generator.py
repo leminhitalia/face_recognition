@@ -22,7 +22,7 @@ predictor = dlib.shape_predictor("model/shape_predictor_68_face_landmarks.dat")
 fa = FaceAligner(predictor, desiredFaceWidth=256)
 
 print("[INFO] Camera sensor warming up...")
-vs = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(0)
 # time.sleep(2.0)
 
 # loop over the frames from the video stream
@@ -30,7 +30,7 @@ while True:
     # grab the frame from the threaded video stream, resize it to
     # have a maximum width of 800 pixels, and convert it to
     # gray scale
-    ret, frame = vs.read()
+    ret, frame = cam.read()
     frame = imutils.resize(frame, width=800)
     # height, width = frame.shape[:2]
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -75,13 +75,13 @@ while True:
     # if the `s` key was pressed save the first found face
     if key == ord('s'):
         if len(faces) > 0:
-            faceAligned = fa.align(frame, gray_frame, faces[0])
+            face_aligned = fa.align(frame, gray_frame, faces[0])
             image_name = base_dir + str(datetime.datetime.now()).replace(" ", "_").replace(":", ".") + ".png"
             print("[DEBUG] image_name = {}".format(image_name))
             # save image
-            cv2.imwrite(image_name, faceAligned)
+            cv2.imwrite(image_name, face_aligned)
             # show image
-            cv2.imshow(image_name, faceAligned)
+            cv2.imshow(image_name, face_aligned)
 
     # loop over the face detections
     for face in faces:
@@ -92,7 +92,7 @@ while True:
     cv2.imshow("Face Detection Window - S: Save/Capture, Q: Quit", frame)
 
 # Stop the camera
-vs.release()
+cam.release()
 
 # Close all windows
 cv2.destroyAllWindows()

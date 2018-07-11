@@ -9,10 +9,10 @@ recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('train_data/train_data.yml')
 
 # Load prebuilt model for Frontal Face
-cascadePath = "classifiers/haarcascade_frontalface_default.xml"
+cascade_path = "classifiers/haarcascade_frontalface_default.xml"
 
 # Create classifier from prebuilt model
-faceCascade = cv2.CascadeClassifier(cascadePath)
+face_cascade = cv2.CascadeClassifier(cascade_path)
 
 # Set the font style
 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -43,7 +43,7 @@ while True:
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Get all face from the video frame
-    faces = faceCascade.detectMultiScale(gray_frame, 1.2, 5)
+    faces = face_cascade.detectMultiScale(gray_frame, 1.2, 5)
 
     # For each face in faces
     for (x, y, w, h) in faces:
