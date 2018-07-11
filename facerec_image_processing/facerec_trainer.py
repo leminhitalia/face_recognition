@@ -29,7 +29,7 @@ def get_face_data_and_labels():
     for user in user_data:
         print("[DEBUG] user = {}".format(user))
         user_id = user['id']
-        dir_path = face_images_folder + str(user_id)
+        dir_path = "{}{}".format(face_images_folder, user_id)
         print("[DEBUG] dir_path = {}".format(dir_path))
         if os.path.exists(dir_path):
             for img in os.listdir(dir_path):

@@ -12,7 +12,7 @@ user_name = input("Enter your name: ")
 
 base_dir = "face_images/"
 if save_folder_name:
-    base_dir = base_dir + str(save_folder_name) + "/"
+    base_dir = "{}{}/".format(base_dir, save_folder_name)
     if not os.path.exists(base_dir):
         os.makedirs(base_dir)
 
@@ -75,7 +75,7 @@ while True:
     if key == ord('s'):
         if len(faces) > 0:
             face_aligned = fa.align(frame, gray_frame, faces[0])
-            image_name = base_dir + str(datetime.datetime.now()).replace(" ", "_").replace(":", ".") + ".png"
+            image_name = "{}{}.png".format(base_dir, str(datetime.datetime.now()).replace(" ", "_").replace(":", "."))
             print("[DEBUG] image_name = {}".format(image_name))
             # save image
             cv2.imwrite(image_name, face_aligned)
