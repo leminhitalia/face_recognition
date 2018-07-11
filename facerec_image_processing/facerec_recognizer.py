@@ -35,7 +35,7 @@ print("[DEBUG] user_data = {} ".format(user_data))
 # Loop
 while True:
     # Read the video frame
-    ret, frame = cam.read()
+    _, frame = cam.read()
 
     frame = imutils.resize(frame, width=800)
 
