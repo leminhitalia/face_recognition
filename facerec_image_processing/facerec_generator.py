@@ -1,8 +1,6 @@
-from imutils.video import VideoStream
 from imutils import face_utils
 from imutils.face_utils import FaceAligner
 import imutils
-import time
 import cv2
 import dlib
 import os
@@ -24,17 +22,17 @@ predictor = dlib.shape_predictor("model/shape_predictor_68_face_landmarks.dat")
 fa = FaceAligner(predictor, desiredFaceWidth=256)
 
 print("[INFO] Camera sensor warming up...")
-vs = VideoStream().start()
-time.sleep(2.0)
+vs = cv2.VideoCapture(0)
+# time.sleep(2.0)
 
 # loop over the frames from the video stream
 while True:
     # grab the frame from the threaded video stream, resize it to
     # have a maximum width of 600 pixels, and convert it to
     # gray scale
-    frame = vs.read()
-    frame = imutils.resize(frame, width=600)
-    height, width = frame.shape[:2]
+    ret, frame = vs.read()
+    frame = imutils.resize(frame, width=800)
+    # height, width = frame.shape[:2]
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     # detect faces in the gray scale frame
     rects = detector(gray_frame, 0)
@@ -93,6 +91,8 @@ while True:
     # show the frame
     cv2.imshow("Face Detection Window - S: Save/Capture, Q: Quit", frame)
 
-# do a bit of cleanup
+# Stop the camera
+vs.release()
+
+# Close all windows
 cv2.destroyAllWindows()
-vs.stop()
