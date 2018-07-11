@@ -23,7 +23,6 @@ fa = FaceAligner(predictor, desiredFaceWidth=256)
 
 print("[INFO] Camera sensor warming up...")
 cam = cv2.VideoCapture(0)
-# time.sleep(2.0)
 
 # loop over the frames from the video stream
 while True:
