@@ -40,10 +40,10 @@ while True:
     frame = imutils.resize(frame, width=800)
 
     # Convert the captured frame into grayscale
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Get all face from the video frame
-    faces = faceCascade.detectMultiScale(gray, 1.2, 5)
+    faces = faceCascade.detectMultiScale(gray_frame, 1.2, 5)
 
     # For each face in faces
     for (x, y, w, h) in faces:
@@ -52,7 +52,7 @@ while True:
         cv2.rectangle(frame, (x - 20, y - 20), (x + w + 20, y + h + 20), (0, 255, 0), 4)
 
         # Recognize the face belongs to which ID
-        face_id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
+        face_id, confidence = recognizer.predict(gray_frame[y:y + h, x:x + w])
         face_id = str(face_id)
 
         print("[DEBUG] face_id = {}, confidence =  {}".format(face_id, confidence))
