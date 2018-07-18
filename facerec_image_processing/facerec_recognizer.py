@@ -64,14 +64,12 @@ while True:
             print("[DEBUG] user_id = {}, face_id = {}, face_id equals user_id = {}".format(user_id, face_id, face_id == user_id))
 
             if face_id == user_id and confidence <= 55:
-                face_id = user['name']
+                face_id = user['name'] + " {0:.2f}%".format(round(100 - confidence, 2))
                 is_found_user = True
                 break
 
         if not is_found_user:
             face_id = 'Unknown'
-
-        face_id = face_id + " {0:.2f}%".format(round(100 - confidence, 2))
 
         # Put text describe who is in the picture
         cv2.rectangle(frame, (x - 22, y - 80), (x + w + 22, y - 22), (0, 255, 0), -1)
