@@ -18,7 +18,7 @@ face_cascade = cv2.CascadeClassifier(cascade_path)
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 # Initialize and start the video frame capture
-cam = cv2.VideoCapture('videos/obama_trump.mp4')
+cam = cv2.VideoCapture('videos/obama_trump1.mp4')
 
 # Read user data
 user_data_file = 'user_data/user_data.json'
