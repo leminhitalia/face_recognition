@@ -32,6 +32,8 @@ except IOError:
 
 print("[DEBUG] user_data = {} ".format(user_data))
 
+found_users = []
+
 # Loop
 while True:
     # Read the video frame
@@ -64,8 +66,32 @@ while True:
             print("[DEBUG] user_id = {}, face_id = {}, face_id equals user_id = {}".format(user_id, face_id, face_id == user_id))
 
             if face_id == user_id:
-                face_id = user['name']  # + " {0:.2f}%".format(round(100 - confidence, 2))
+                user_name = user['name']
+                face_id = user_name  # + " {0:.2f}%".format(round(100 - confidence, 2))
                 is_found_user = True
+
+                is_found_new_user = True
+                if len(found_users) > 0:
+                    for found_user in found_users:
+                        if found_user['id'] == user_id:
+                            found_user['count'] = found_user['count'] + 1
+                            is_found_new_user = False
+                            break
+
+                    if is_found_new_user:
+                        found_new_user = {
+                            'count': 1,
+                            'id': user_id,
+                            'name': user_name
+                        }
+                        found_users.append(found_new_user)
+                else:
+                    found_new_user = {
+                        'count': 1,
+                        'id': user_id,
+                        'name': user_name
+                    }
+                    found_users.append(found_new_user)
                 break
 
         if not is_found_user:
@@ -80,6 +106,10 @@ while True:
 
     # If 'q' is pressed, close program
     if cv2.waitKey(10) & 0xFF == ord('q'):
+        print("[DEBUG] found_users = {}".format(found_users))
+        with open('found_users.json', mode='w') as output_file:
+            output_file.write(json.dumps(found_users, indent=4))
+            output_file.close()
         break
 
 # Stop the camera
