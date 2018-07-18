@@ -18,7 +18,7 @@ if save_folder_name:
 
 print("[INFO] Loading facial landmark predictor...")
 detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor("model/shape_predictor_68_face_landmarks.dat")
+predictor = dlib.shape_predictor("classifiers/shape_predictor_68_face_landmarks.dat")
 fa = FaceAligner(predictor, desiredFaceWidth=256)
 
 print("[INFO] Camera sensor warming up...")
