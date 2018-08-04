@@ -6,9 +6,11 @@ import dlib
 import os
 import json
 import datetime
+import hashlib
 
-save_folder_name = int(input("Enter your id: "))
+# save_folder_name = input("Enter your id: ")
 user_name = input("Enter your name: ")
+save_folder_name = int(hashlib.sha256(user_name.encode('utf-8')).hexdigest(), 16) % (10**8)
 
 base_dir = "face_images/"
 if save_folder_name:
