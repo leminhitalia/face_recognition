@@ -64,7 +64,8 @@ while True:
             print("[DEBUG] user_id = {}, face_id = {}, face_id equals user_id = {}".format(user_id, face_id, face_id == user_id))
 
             if face_id == user_id and confidence <= 50:
-                face_id = user['name'] + " {0:.2f}%".format(round(100 - confidence, 2))
+                # face_id = user['name'] + " {0:.2f}%".format(round(100 - confidence, 2))
+                face_id = user['name'] + " : {0:.2f}".format(round(confidence, 2))
                 is_found_user = True
                 break
 
